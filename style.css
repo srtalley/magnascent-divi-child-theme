@@ -1,9 +1,9 @@
 /*
-Theme Name: CrossFit Northport - Divi Child
+Theme Name: CrossFit North Port - Divi Child
 Template: Divi
 Author: KCD LLC
-Version: 1.7.7
-Updated: 2019-03-09
+Version: 1.7.8
+Updated: 2019-04-05
 */
 /* Hide the zendesk icon in the Divi builder */
 html.et-fb-preview--desktop iframe.zEWidget-launcher,
@@ -431,27 +431,17 @@ html.et-fb-preview--phone iframe.zEWidget-launcher {
 }
 
 /* Facebook reviews */
-.wp-facebook-stars .wp-star svg path {
+.rplg-biz-rating.rplg-trim.rplg-biz-facebook svg path,
+.rplg-slider .rplg-stars svg path {
     fill: #00c4f6;
 }
-
-.fbrev-slider .wp-facebook-content2>svg {
-    background-color: #666 !important;
+.rplg .rplg-social-logo.rplg-facebook-logo svg {
+    background-color: #919191 !important;
 }
-.fbrev-slider .wp-more-toggle {
-    color: #00c4f6!important;
-    text-decoration: none!important;
+.rplg .rplg-biz-rating.rplg-biz-facebook .rplg-biz-score,
+.rplg .rplg-review-name {
+    color: #00c4f6 !important;   
 }
-.fbrev-slider .wp-facebook-time {
-    line-height: 16px;
-}
-.fbrev-slider .wp-facebook-name {
-    color: #333333!important;
-    font-family: 'Oswald',Helvetica,Arial,Lucida,sans-serif;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-}
-.fbrev-slider .wp-facebook-user img,
 .rplgsw-pagination.rplgsw-pagination-clickable.rplgsw-pagination-bullets {
     display: none;
 }
