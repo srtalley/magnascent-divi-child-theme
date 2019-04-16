@@ -2,8 +2,8 @@
 Theme Name: CrossFit North Port - Divi Child
 Template: Divi
 Author: KCD LLC
-Version: 1.7.8
-Updated: 2019-04-05
+Version: 1.8
+Updated: 2019-04-08
 */
 /* Hide the zendesk icon in the Divi builder */
 html.et-fb-preview--desktop iframe.zEWidget-launcher,
@@ -432,6 +432,7 @@ html.et-fb-preview--phone iframe.zEWidget-launcher {
 
 /* Facebook reviews */
 .rplg-biz-rating.rplg-trim.rplg-biz-facebook svg path,
+.rplg-biz-rating.rplg-trim.rplg-biz-google svg path,
 .rplg-slider .rplg-stars svg path {
     fill: #00c4f6;
 }
@@ -439,8 +440,16 @@ html.et-fb-preview--phone iframe.zEWidget-launcher {
     background-color: #919191 !important;
 }
 .rplg .rplg-biz-rating.rplg-biz-facebook .rplg-biz-score,
+.rplg .rplg-biz-rating.rplg-biz-google .rplg-biz-score,
 .rplg .rplg-review-name {
     color: #00c4f6 !important;   
+}
+.rplg .rplg-box-content .rplg-review-badge {
+    background: #fafafa;
+    padding-bottom: 3px;
+}
+.rplg-slider .rplg-box .rplg-box-content {
+    padding-right: 10px !important;
 }
 .rplgsw-pagination.rplgsw-pagination-clickable.rplgsw-pagination-bullets {
     display: none;
