@@ -24,7 +24,7 @@ $cart_quantity = ! empty( $cart_item ) ? $cart_item['quantity'] : 0;
 ?>
 <div class="quantity buttons_added">
 	<input type="button" value="-" class="minus" />
-	<input type="number" step="1" min="0" max="<?php echo $product->backorders_allowed() ? '' : $product->get_stock_quantity(); ?>" name="product_id" value="<?php echo $cart_quantity; ?>" title="<?php echo esc_attr_x( 'Qty', 'Product quantity input tooltip', 'bridge' ) ?>" class="input-text qty text" size="4" pattern="<?php echo esc_attr( $pattern ); ?>" inputmode="numeric" aria-labelledby="<?php echo ! empty( $args['product_name'] ) ? sprintf( esc_attr__( '%s quantity', 'bridge' ), $args['product_name'] ) : ''; ?>"  data-add_to_cart="<?php echo $product->get_id(); ?>" data-cart_quantity="<?php echo $cart_quantity; ?>" />
+	<input type="number" step="1" min="0" max="<?php echo $product->backorders_allowed() ? '' : $product->get_stock_quantity(); ?>" name="product_id" value="<?php echo $cart_quantity; ?>" title="<?php echo esc_attr_x( 'Qty', 'Product quantity input tooltip', 'bridge' ) ?>" class="input-text qty text" size="4" inputmode="numeric" aria-labelledby="<?php echo ! empty( $args['product_name'] ) ? sprintf( esc_attr__( '%s quantity', 'bridge' ), $args['product_name'] ) : ''; ?>"  data-add_to_cart="<?php echo $product->get_id(); ?>" data-cart_quantity="<?php echo $cart_quantity; ?>" />
 
 	<input type="button" value="+" class="plus" />
 </div>

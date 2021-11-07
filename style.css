@@ -2,8 +2,8 @@
 Theme Name: Magnascent - Divi Child
 Template: Divi
 Author: Dusty Sun LLC
-Version: 0.1
-Updated: 2021-10-10
+Version: 1.1.0
+Updated: 2021-11-07
 */
 /* Remove gray line on pages */
 #main-content .container:before {
@@ -16,6 +16,14 @@ Updated: 2021-10-10
 #et-main-area a:hover {
     color: #5c89a9;
 }
+/* Gutenberg */
+@media (max-width: 782px) {
+    .wp-block-column.full-width-mobile {
+        flex-basis: 100% !important;
+        margin: 0 !important;
+    }
+}
+
 /* Main area padding */
 body:not(.et-tb) #main-content .container, body:not(.et-tb-has-header) #main-content .container {
     padding-top: 66px;
@@ -28,6 +36,10 @@ body:not(.et_pb_pagebuilder_layout) #main-content > .container {
     padding-right: 15px;
 }
 /** PRIMARY MENU **/
+#mobile_menu2 {
+    height: 80vh;
+    overflow-y: scroll;
+}
 #mobile-cart-button {
     display: none;
 }
@@ -175,8 +187,9 @@ body:not(.et_pb_pagebuilder_layout) #main-content > .container {
     background-color: #4c4c4c!important;
     border-color: #4c4c4c !important;
 }
-/* input box styling */
-.wpcf7-form .wpcf7-date, .wpcf7-form .wpcf7-text, .wpcf7-form .wpcf7-textarea, .wpcf7-form .wpcf7-captchar, .wpcf7 .wpcf7-form select {
+/* input box styling - includes strong testimonials */
+.wpcf7-form .wpcf7-date, .wpcf7-form .wpcf7-text, .wpcf7-form .wpcf7-textarea, .wpcf7-form .wpcf7-captchar, .wpcf7 .wpcf7-form select,
+.strong-form input[type="text"], .strong-form input[type="email"], .strong-form textarea {
     font-family: inherit;
     border: 2px solid #eee !important;
     width: 100%;
@@ -199,7 +212,8 @@ body:not(.et_pb_pagebuilder_layout) #main-content > .container {
 .wpcf7-form .wpcf7-text:focus,
 .wpcf7-form .wpcf7-textarea:focus,
 .wpcf7-form .wpcf7-captchar:focus,
-.wpcf7-form .wpcf7-select {
+.wpcf7-form .wpcf7-select,
+.strong-form input[type="text"]:focus, .strong-form input[type="email"]:focus, .strong-form textarea:focus {
     border: 2px solid #f6a740 !important;
 }
 /* Select styling */
@@ -298,6 +312,13 @@ div.wpcf7-response-output {
 .contact-flex label {
     font-weight: 600;
 }
+.vendor-shipping-fields{
+    display: none;
+}
+.dist-shipping_different .wpcf7-list-item {
+    margin-left: 0;
+}
+
 .contact-required {
     color: #ff0000;
 }
@@ -305,7 +326,8 @@ div.wpcf7-response-output {
 .not-selected.show-error .contact-error-message {
     display: none;
 }
-.show-error .contact-error-message {
+.show-error .contact-error-message,
+.vendor-errors .message {
     display: block;
     height: auto;
     line-height: normal;
@@ -315,6 +337,58 @@ div.wpcf7-response-output {
     border: 1px solid #fbc2c4;
     font-size: 13px;
     font-weight: 400;
+}
+.vendor-errors .message {
+    display: none;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+.vendor-errors .message a {
+    color: #003870;
+}
+.email-error .vendor-errors .vendor-email-error.message {
+    display: block;
+}
+.password-error .vendor-errors .vendor-password-error.message {
+    display: block;
+}
+#become_distributor_form + .wpcf7-response-output {
+    padding: 15px 15px 40px;
+    margin: 20px 0;
+    /* border: 1px solid transparent; */
+    border-radius: 4px;
+    text-align: center;
+    font-size: 30px;
+    line-height: 1.2em;
+} 
+.wpcf7-form #become_distributor_form + .wpcf7-response-output:before {
+    content: "";
+    font-family: ETmodules!important;
+    display: block;
+    margin: 20px 10px 30px;
+    font-size: 90px;
+    line-height: 1.2em;
+}
+.wpcf7-form.sent #become_distributor_form + .wpcf7-response-output {
+    color: #468847;
+    background-color: #dff0d8;
+    border-color: #719e72;
+}
+.wpcf7-form.sent #become_distributor_form + .wpcf7-response-output:before {
+    content: "\52";
+}
+.wpcf7-form.invalid #become_distributor_form + .wpcf7-response-output,
+.wpcf7-form.unaccepted #become_distributor_form + .wpcf7-response-output,
+.wpcf7-form.payment-required #become_distributor_form + .wpcf7-response-output {
+    color: #b18000;
+    background-color: #fff0c8;
+    border-color: #ffb900;
+}
+.wpcf7-form.invalid #become_distributor_form + .wpcf7-response-output:before,
+.wpcf7-form.unaccepted #become_distributor_form + .wpcf7-response-output:before,
+.wpcf7-form.payment-required #become_distributor_form + .wpcf7-response-output:before {
+    content: "\51";
+
 }
 /** Home page styling **/
 .lh-cloud {
@@ -377,13 +451,8 @@ div.wpcf7-response-output {
     flex-flow: column nowrap;
     justify-content: center;
 }
-
 .cart-contents:before {
-    /* font-family: 'Font Awesome 5 Free'; */
-    /* font-weight: 900;	 */
-    /* content: "\f290" !important; */
-    /* font-size: 30px; */
-    /* color: #FF1493; */
+
     width: 32px;
     height: 32px;
     background-size: contain;
@@ -395,7 +464,6 @@ div.wpcf7-response-output {
 .cart-contents:hover {
     text-decoration: none;
 }
-
 .cart-contents-count {
     position: absolute;
     top: 32px;
@@ -1053,6 +1121,13 @@ form.checkout.woocommerce-checkout .input-text {
 .woocommerce .woocommerce-orders-table .woocommerce-orders-table__cell-order-actions a:last-child {
     margin-right: 0;
 }
+/** Single Product **/
+.single-product .woocommerce-tabs.wc-tabs-wrapper {
+    display: none;
+}
+.single-product .wcmp-report-abouse-wrapper {
+    display: none;
+}
 /** Checkmarks for li **/
 .checkmark-list ul li {
     background: url(images/check-list-dark.png) left 4px no-repeat;
@@ -1097,6 +1172,78 @@ form.checkout.woocommerce-checkout .input-text {
 .vendor-reject h4 {
     color: #960000;
 }
+/** Testimonials **/
+.reviews-page .wpmtst-testimonial {
+    padding: 70px 150px;
+    margin-bottom: 50px; 
+    
+}
+.reviews-page .wpmtst-testimonial .wpmtst-testimonial-heading {
+    display: none;
+}
+.reviews-page .wpmtst-testimonial .wpmtst-testimonial-content p {
+    text-align: center;
+    font-style: italic;
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 1.6em;
+}
+.reviews-page .wpmtst-testimonial .wpmtst-testimonial-field.testimonial-name {
+    margin-top: 25px;
+    text-align: center;
+    color: #6286a9;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.6em;
+}
+.reviews-page .wpmtst-testimonial:nth-child(odd) {
+    background-color: #f6a740;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0px 12px 18px -6px rgb(0 0 0 / 30%);
+}
+.reviews-page .wpmtst-testimonial:nth-child(odd) .wpmtst-testimonial-content p {
+    color: #fff;
+}
+.pum-title.popmake-title {
+    padding: 0 0 10px 0;
+    font-weight: 700;
+    font-family: 'Roboto Slab', serif;
+    color: #393939;
+    margin: 0;
+    font-size: 30px;
+} 
+.reviews-page-form .strong-form-inner {
+    padding: 0;
+}
+.reviews-page-form #wpmtst_submit_testimonial {
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    background-color: #f6a740;
+    border: none;
+    border-radius: 4px;
+    text-transform: uppercase;
+    padding: 0 25px;
+    line-height: 45px;
+    transition: all 0.3s linear 0s;
+    border: 0;
+    text-shadow: none;
+}
+.reviews-page-form #wpmtst_submit_testimonial:hover {
+    background-color: #456e8b;
+    cursor: pointer;
+}
+.reviews-page-form .wpmtst-testimonial-success p {
+    font-size: 22px;
+    font-weight: 500;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+    color: #468847;
+    padding: 10px 20px;
+    border-radius: 4px;
+}
 /****/
 @media (max-width: 1150px) {
     #primary-menu-wrapper .et_pb_menu .et_pb_menu__menu>nav>ul>li:not(.mg-woo-cart-items-wrapper) {
@@ -1120,6 +1267,9 @@ form.checkout.woocommerce-checkout .input-text {
     div#customer_details,
     #woocommmerce-checkout-review-wrapper {
         flex-basis: 50%;
+    }
+    .reviews-page .wpmtst-testimonial {
+        padding: 50px 120px;
     }
 }
 @media (max-width: 980px) {
@@ -1164,6 +1314,9 @@ form.checkout.woocommerce-checkout .input-text {
         order: 13;
         margin-top: 20px;
     }
+    .reviews-page .wpmtst-testimonial {
+        padding: 40px 90px;
+    }
 }
 @media (max-width: 767px) {
     #primary-menu-wrapper .et_pb_menu__logo-wrap .et_pb_menu__logo {
@@ -1198,8 +1351,17 @@ form.checkout.woocommerce-checkout .input-text {
     #woocommmerce-checkout-review-wrapper {
         padding-left: 0;
     }
-    .contact-flex .contact-half {
+    .contact-flex .contact-half,
+    .contact-flex .contact-third {
         flex-basis: 100%;
+    }
+    .reviews-page .wpmtst-testimonial {
+        padding: 20px 40px;
+    }
+    .reviews-page .wpmtst-testimonial .wpmtst-testimonial-content p,
+    .reviews-page .wpmtst-testimonial .wpmtst-testimonial-field.testimonial-name {
+        font-size: 18px;
+        line-height: 1.5em;
     }
 }
 

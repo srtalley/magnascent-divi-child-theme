@@ -4,14 +4,10 @@ namespace Magnascent\WooCommerce;
 class OPC {
 
     public function __construct() {
-
-
         add_filter('wp_robots', array($this, 'mg_maybe_enable_robots'), 100, 1);
-
     }
  
    
-// THIS IS NOT WORKING
     /**
      * Remove noindex from the one page checkout page
      */

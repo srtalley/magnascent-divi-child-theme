@@ -101,9 +101,11 @@ jQuery(function($) {
                 if($(this).val() != $(confirm_email).val()) {
                     $('.confirm-email').addClass('show-error');
                     $('.wpcf7-submit').prop('disabled', true);
+                    $(form).addClass('email-error');
                 } else {
                     $('.confirm-email').removeClass('show-error ');
                     $('.wpcf7-submit').prop('disabled', false);
+                    $(form).removeClass('email-error');
                 }
             });
             $(confirm_email).on('blur', function() {
@@ -113,9 +115,11 @@ jQuery(function($) {
                 if($(this).val() != $(email).val()) {
                     $('.confirm-email').addClass('show-error');
                     $('.wpcf7-submit').prop('disabled', true);
+                    $(form).addClass('email-error');
                 } else {
                     $('.confirm-email').removeClass('show-error ');
                     $('.wpcf7-submit').prop('disabled', false);
+                    $(form).removeClass('email-error');
                 }
             });
 
@@ -127,9 +131,11 @@ jQuery(function($) {
                 if($(this).val() != $(confirm_password).val()) {
                     $('.confirm-password').addClass('show-error');
                     $('.wpcf7-submit').prop('disabled', true);
+                    $(form).addClass('password-error');
                 } else {
                     $('.confirm-password').removeClass('show-error ');
                     $('.wpcf7-submit').prop('disabled', false);
+                    $(form).removeClass('password-error');
                 }
             });
             $(confirm_password).on('blur', function() {
@@ -139,14 +145,35 @@ jQuery(function($) {
                 if($(this).val() != $(password).val()) {
                     $('.confirm-password').addClass('show-error');
                     $('.wpcf7-submit').prop('disabled', true);
+                    $(form).addClass('password-error');
                 } else {
                     $('.confirm-password').removeClass('show-error ');
                     $('.wpcf7-submit').prop('disabled', false);
+                    $(form).removeClass('password-error');
                 }
             });
 
+            // handle the shipping fields
+            var shipping_address_different = $('input[name="dist-shipping_different[]"]');
+            $(shipping_address_different).change(function() {
 
+                if($(this).prop("checked") == true) {
+                    $('.vendor-shipping-fields').slideDown();
+                } else {
+                    $('.vendor-shipping-fields').slideUp(function(){
+                        $('.vendor-shipping-fields input').val('');
+                    });
+                }
+              });
 
+              $('#vendor-email-error').on('click', function(e){
+                  e.preventDefault();
+                  $('#dist-email').focus();
+              });
+              $('#vendor-password-error').on('click', function(e){
+                e.preventDefault();
+                $('#dist-password').focus();
+            });
 
         }
     }
