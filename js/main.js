@@ -6,9 +6,9 @@ jQuery(function($) {
 
         // setupFixedHeader();
         window.onscroll = function() {setupFixedHeader()};
-      initAddToCartPlusMinus();
+        initAddToCartPlusMinus();
 
-      become_a_distributor();
+        become_a_distributor();
     });
 
     /**
@@ -55,6 +55,8 @@ jQuery(function($) {
 
               if ( max && ( max == currentVal || currentVal > max ) ) {
                   $qty.val( max );
+              } else if( min && currentVal < min) {
+                  $qty.val( min );
               } else {
                   $qty.val( currentVal + parseFloat( step ) );
               }
@@ -73,16 +75,12 @@ jQuery(function($) {
       });
       if($('.wcopc').length) {
         $(document.body).on('after_opc_add_remove_product', function (e, data) {
-            console.log(data);
             // Add up the quantities
             var quantities = $('#order_review .shop_table .quantity input[type="number"]');
             var overall_quantity = 0;
             $(quantities).each(function(){
-                // console.log('value');
-                // console.log($(this).val());
                 overall_quantity = parseInt($(this).val()) + overall_quantity;
             });
-            console.log(overall_quantity);
 
             });
         }

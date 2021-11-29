@@ -9,7 +9,6 @@ class Vendor{
 
         add_action( 'wpcf7_before_send_mail', array($this, 'add_pending_vendor'), 10, 3 );
         add_action( 'wcmp_vendor_preview_tabs_form_post', array($this, 'show_vendor_info_in_plugin') );
-        add_filter('wp_ajax_reject_pending_vendor', array($this, 'new_reject_pending_vendor'));
         add_filter('wcmp_vendor_get_image_src', array($this, 'replace_broken_wcmp_user_profile_image'), 10, 1);
         add_action( 'edit_user_profile',  array($this, 'show_user_vendor_application') );
     }
@@ -156,32 +155,6 @@ class Vendor{
             </table>
         <?php
         
-    }
-    /**
-     * Reject new pending vendor
-     */
-    function new_reject_pending_vendor()
-    {
-        $user_id = $_POST['user_id']; 
-        $user = new WP_User( absint( $user_id ) );
-        if(is_array( $user->roles ) && in_array( 'dc_pending_vendor', $user->roles )) {
-            $user->remove_role( 'dc_pending_vendor' );
-        }
-        $user->add_role( 'customer' );
-        $user_dtl = get_userdata( absint( $user_id ) );
-        $email = WC()->mailer()->emails['WC_Email_Rejected_New_Vendor_Account'];
-        $email->trigger( $user_id, $user_dtl->user_pass );		
-        
-        if(is_array( $user->roles ) && in_array( 'dc_vendor', $user->roles )) {
-            $vendor = get_wcmp_vendor($user_id);
-            if($vendor) wp_delete_term( $vendor->term_id, 'dc_vendor_shop' );
-            $caps = $this->get_vendor_caps( $user_id );
-            foreach( $caps as $cap ) {
-                $user->remove_cap( $cap );
-            }
-            $user->remove_cap('manage_woocommerce');
-        }
-        die();
     }
 
     /**

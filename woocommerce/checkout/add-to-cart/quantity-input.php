@@ -21,10 +21,13 @@ $cart_quantity = ! empty( $cart_item ) ? $cart_item['quantity'] : 0;
 // 	'min_value'   => 0,
 // ), $product, false );
 // echo str_replace( 'type="number"', 'type="number" data-add_to_cart="' . $product->get_id() . '" data-cart_quantity="' . $cart_quantity . '"', $input_button ); 
+// get min/max amounts
+$minQty = get_post_meta($product->get_id(), '_wc_mmax_min', true);
+$maxQty = get_post_meta($product->get_id(), '_wc_mmax_max', true);
 ?>
 <div class="quantity buttons_added">
 	<input type="button" value="-" class="minus" />
-	<input type="number" step="1" min="0" max="<?php echo $product->backorders_allowed() ? '' : $product->get_stock_quantity(); ?>" name="product_id" value="<?php echo $cart_quantity; ?>" title="<?php echo esc_attr_x( 'Qty', 'Product quantity input tooltip', 'bridge' ) ?>" class="input-text qty text" size="4" inputmode="numeric" aria-labelledby="<?php echo ! empty( $args['product_name'] ) ? sprintf( esc_attr__( '%s quantity', 'bridge' ), $args['product_name'] ) : ''; ?>"  data-add_to_cart="<?php echo $product->get_id(); ?>" data-cart_quantity="<?php echo $cart_quantity; ?>" />
+	<input type="number" step="1" min="<?php echo $minQty;?>" max="<?php echo $maxQty;?>" name="product_id" value="<?php echo $cart_quantity; ?>" title="<?php echo esc_attr_x( 'Qty', 'Product quantity input tooltip', 'bridge' ) ?>" class="input-text qty text" size="4" inputmode="numeric" data-add_to_cart="<?php echo $product->get_id(); ?>" data-cart_quantity="<?php echo $cart_quantity; ?>" />
 
 	<input type="button" value="+" class="plus" />
 </div>

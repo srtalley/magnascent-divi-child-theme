@@ -18,6 +18,7 @@ class HomepageAnimation {
         .magnascent-homepage .container {
             padding-top: 0 !important;
             position: static;
+            text-align: center;
         }
         .magnascent-homepage img {
             vertical-align: middle;

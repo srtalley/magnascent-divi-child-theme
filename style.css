@@ -2,7 +2,7 @@
 Theme Name: Magnascent - Divi Child
 Template: Divi
 Author: Dusty Sun LLC
-Version: 1.1.0
+Version: 1.1.6
 Updated: 2021-11-07
 */
 /* Remove gray line on pages */
@@ -352,16 +352,16 @@ div.wpcf7-response-output {
 .password-error .vendor-errors .vendor-password-error.message {
     display: block;
 }
-#become_distributor_form + .wpcf7-response-output {
-    padding: 15px 15px 40px;
-    margin: 20px 0;
+.wpcf7-response-output {
+    padding: 15px 15px 40px !important;
+    margin: 20px 0 !important;
     /* border: 1px solid transparent; */
     border-radius: 4px;
     text-align: center;
     font-size: 30px;
     line-height: 1.2em;
 } 
-.wpcf7-form #become_distributor_form + .wpcf7-response-output:before {
+.wpcf7-response-output:before {
     content: "";
     font-family: ETmodules!important;
     display: block;
@@ -369,58 +369,26 @@ div.wpcf7-response-output {
     font-size: 90px;
     line-height: 1.2em;
 }
-.wpcf7-form.sent #become_distributor_form + .wpcf7-response-output {
+.wpcf7-form.sent .wpcf7-response-output {
     color: #468847;
     background-color: #dff0d8;
     border-color: #719e72;
 }
-.wpcf7-form.sent #become_distributor_form + .wpcf7-response-output:before {
+.wpcf7-form.sent .wpcf7-response-output:before {
     content: "\52";
 }
-.wpcf7-form.invalid #become_distributor_form + .wpcf7-response-output,
-.wpcf7-form.unaccepted #become_distributor_form + .wpcf7-response-output,
-.wpcf7-form.payment-required #become_distributor_form + .wpcf7-response-output {
+.wpcf7-form.invalid .wpcf7-response-output,
+.wpcf7-form.unaccepted .wpcf7-response-output,
+.wpcf7-form.payment-required .wpcf7-response-output {
     color: #b18000;
     background-color: #fff0c8;
     border-color: #ffb900;
 }
-.wpcf7-form.invalid #become_distributor_form + .wpcf7-response-output:before,
-.wpcf7-form.unaccepted #become_distributor_form + .wpcf7-response-output:before,
-.wpcf7-form.payment-required #become_distributor_form + .wpcf7-response-output:before {
+.wpcf7-form.invalid .wpcf7-response-output:before,
+.wpcf7-form.unaccepted .wpcf7-response-output:before,
+.wpcf7-form.payment-required .wpcf7-response-output:before {
     content: "\51";
 
-}
-/** Home page styling **/
-.lh-cloud {
-    position: absolute;
-    left: 0;
-    top: 46px;
-    z-index: 1;
-}
-.rh-cloud {
-    position: absolute;
-    right: 0;
-    top: 400px;
-    z-index: 1;
-}
-.homepage-text-box {
-    content: '';
-    position: absolute;
-    left: -20px;
-    top: -20px;
-    background: #f6a740;
-    width: 72px;
-    height: 72px;
-    border-radius: 5px;
-    text-align: center;
-    line-height: 72px;
-    font-size: 48px;
-    font-family: 'open sans',sans-serif;
-    font-weight: 700;
-    color: #fff;
-}
-.homepage-text-box.text-box-01 {
-    content: '01';
 }
 /* Testimonial Slider */
 .testimonial-slider .et_pb_slider_container_inner {
@@ -487,6 +455,13 @@ div.wpcf7-response-output {
 #secondary-menu-wrapper .et_pb_menu__wrap {
     justify-content: flex-end;
 }
+.logged-in .et-menu li.menu-loggedin {
+    display: inline-block;
+}
+.et-menu li.menu-loggedin,
+.logged-in .et-menu li.menu-loggedout {
+    display: none;
+}
 #secondary-menu-wrapper .menu-facebook {
     order: 1;
 }
@@ -495,12 +470,12 @@ div.wpcf7-response-output {
 }
 #secondary-menu-wrapper .menu-account .sub-menu {
     left: auto;
-    right: -10px;
-    width: 160px;
+    right: -40px;
+    width: 200px;
     text-align: center;
 }
 #secondary-menu-wrapper .menu-account .sub-menu li a {
-    width: 120px;
+    width: 160px;
 }
 #secondary-menu-wrapper li.menu-item-has-children .sub-menu li a:hover {
     background-color: rgba(92,137,169,0.65);
@@ -760,6 +735,9 @@ form.checkout.woocommerce-checkout .form-row label {
     text-align: center;
     text-decoration: none;
 }
+.quantity.buttons_added {
+    width: 120px;
+}
 .quantity.buttons_added input[type="button"] {
     background-color: #fff !important;
     border: 2px solid #e2ad68 !important;
@@ -788,7 +766,7 @@ form.checkout.woocommerce-checkout .form-row label {
 }
 .quantity.buttons_added .input-text.qty {
     border: none;
-    width: 40px;
+    width: 50px;
     display: inline;
     text-align: center !important;
     font-weight: 600 !important;
