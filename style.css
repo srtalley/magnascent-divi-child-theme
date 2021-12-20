@@ -2,8 +2,8 @@
 Theme Name: Magnascent - Divi Child
 Template: Divi
 Author: Dusty Sun LLC
-Version: 1.1.6
-Updated: 2021-11-07
+Version: 1.1.7
+Updated: 2021-12-19
 */
 /* Remove gray line on pages */
 #main-content .container:before {
@@ -719,6 +719,32 @@ form.checkout.woocommerce-checkout .form-row label {
     line-height: 1.2em;
     margin-bottom: 10px;
 }
+#opc-product-selection .shop_table .product-name a {
+    color: #393939;
+}
+
+.wcopc-gallery {
+    margin: 10px 0;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.wcopc-gallery a {
+    display: block;
+    height: 100%;
+}
+.wcopc-gallery a:hover {
+    cursor: pointer;
+}
+.wcopc-gallery a img {
+    width: auto;
+    height: 100%;
+    padding: 0 5px
+}
+.pp_woocommerce .pp_gallery {
+    margin-top: 10px;
+}
 #opc-product-selection .shop_table .product-price {
     margin-bottom: 10px;
 }
@@ -815,6 +841,9 @@ form.checkout.woocommerce-checkout {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+}
+.woocommerce-checkout #payment ul.payment_methods li input {
+    min-width: 60px;
 }
 div#customer_details {
     flex: 1 1 66%;

@@ -25,31 +25,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<tr class="product-item cart <?php if ( wcopc_get_products_prop( $product, 'in_cart' ) ) echo 'selected'; ?>">
 
 		<td class="product-thumbnail">
-			<a href="<?php echo wp_get_attachment_url( $product->get_image_id() ); ?>" data-rel="prettyPhoto[<?php echo $product->get_id(); ?>]"  itemprop="image" class="woocommerce-main-image zoom">
+			<a href="<?php echo wp_get_attachment_url( $product->get_image_id() ); ?>" data-rel="prettyPhoto"  itemprop="image" class="woocommerce-main-image zoom">
 				<?php echo $product->get_image(); ?>
 			</a>
-
-			<?php
-			$attachment_ids = $product->get_gallery_image_ids();
-			echo '<div class="wcopc-gallery">';
-			foreach( $attachment_ids as $attachment_id ) 
-				{
-				// Display the image URL
-				  $original_image_url = wp_get_attachment_url( $attachment_id );
-
-				echo '<a href="' . $original_image_url . '" data-rel="prettyPhoto[' . $product->get_id() . ']">';
-				// Display Image instead of URL
-				echo wp_get_attachment_image($attachment_id, 'full');
-					echo '</a>';
-				}
-			echo '</div>';
-			?>
-
 		</td>
 
 		<td class="product-name">
-			<?php $product_url = $product->get_permalink(); ?>
-			<?php echo '<a href="' . $product_url . '">' . $product->get_title() . '</a>'; ?>
+			<?php echo $product->get_title(); ?>
 			<?php if ( $product->is_type( 'variation' ) ) : ?>
 				<?php $attribute_string = sprintf( '&nbsp;(%s)', wc_get_formatted_variation( $product->get_variation_attributes(), true ) ); ?>
 			<span class="attributes"><?php echo esc_html( apply_filters( 'wcopc_attributes', $attribute_string, $product->get_variation_attributes(), $product ) ); ?></span>
