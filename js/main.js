@@ -1,4 +1,4 @@
-//version: 1.1.7
+//version: 1.2.0
 
 
 jQuery(function($) {
@@ -9,6 +9,8 @@ jQuery(function($) {
         initAddToCartPlusMinus();
 
         become_a_distributor();
+
+        checkout_country_selection();
     });
 
     /**
@@ -176,9 +178,43 @@ jQuery(function($) {
         }
     }
   
-    function disable_enable_confirm_email() {
-
-        // wpcf7-submit
+    /**
+     * Runs on the checkout page to detect a user country
+     */
+    function checkout_country_selection () {
+        if($('.woocommerce-checkout').length) {
+            $( document.body ).on( 'updated_checkout', function(){
+                mgnscnt_get_user_country();
+            });
+        }
     }
+
+    /**
+     * Get the woocommerce country for the user
+     */
+     function mgnscnt_get_user_country() {
+
+        // element.preventDefault();
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            url: mgnscnt_actions.ajaxurl,
+            data: {
+                'action': 'mgnscnt_get_user_country',
+                'nonce': mgnscnt_actions.ajaxnonce,
+            },
+            success: function(data) {
+                console.log(data);
+                $('.wcopc').removeClass('us');
+                $('.wcopc').removeClass('gb');
+                $('.wcopc').addClass(data.user_country.toLowerCase());
+
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.log(jqXHR + ' :: ' + textStatus + ' :: ' + errorThrown);
+            }
+        });
+    }
+
 
 });

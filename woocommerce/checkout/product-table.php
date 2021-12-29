@@ -14,15 +14,31 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<?php foreach( $products as $product ) : ?>
 
 	<?php 
+
+		// do not show the product if it is not purchaseable
+		// if(!$product->is_purchasable()) {
+		// 	continue;
+		// }
 		// CUSTOM 
+
 		// See if we should show this product or not based on user role
 		$current_user_roles    = alg_wc_pvbur_get_current_user_all_roles();
 		$show_current_product = alg_wc_pvbur_is_visible($current_user_roles, $product->get_id());
 		if(!$show_current_product) continue;
+
+		// variables from the country specific WooCommerce plugin
+		$country_restrictions = get_post_meta($product->get_id(), '_fz_country_restriction_type', true);
+		$countries_restricted_class = '';
+		$countries_restricted_data = 'none';
+		if($country_restrictions == 'specific') {
+			$countries_restricted = get_post_meta($product->get_id(), '_restricted_countries', true);
+			$countries_restricted_class = 'restricted ' . strtolower(implode(' ', $countries_restricted));
+			$countries_restricted_data = strtolower(implode(',', $countries_restricted));
+		}
 		// END CUSTOM
 	?>
 
-	<tr class="product-item cart <?php if ( wcopc_get_products_prop( $product, 'in_cart' ) ) echo 'selected'; ?>">
+	<tr class="product-item cart <?php if ( wcopc_get_products_prop( $product, 'in_cart' ) ) echo 'selected'; echo $countries_restricted_class; ?>" data-restricted_countries="<?php echo $countries_restricted_data; ?>">
 
 		<td class="product-thumbnail">
 			<a href="<?php echo wp_get_attachment_url( $product->get_image_id() ); ?>" data-rel="prettyPhoto[<?php echo $product->get_id(); ?>]"  itemprop="image" class="woocommerce-main-image zoom">
@@ -69,6 +85,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<td class="product-quantity">
 			<?php wc_get_template( 'checkout/add-to-cart/opc.php', array( 'product' => $product ), '', PP_One_Page_Checkout::$template_path ); ?>
 		</td>
+		<td class="restriction-notice">
+			<p>This product is not available in your chosen country.</p>
+		</td>
 	</tr>
 	<?php endforeach; // end of the loop. ?>
+
 </table>
