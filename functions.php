@@ -14,12 +14,11 @@ require_once( dirname( __FILE__ ) . '/includes/class-woocommerce-vendor.php');
 
 /* Add custom functions below */
 
-add_action( 'wp_enqueue_scripts', 'ds_enqueue_assets', 15 );
+add_action( 'wp_enqueue_scripts', 'ds_enqueue_assets', 10 );
 function ds_enqueue_assets() {
 
-  // wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css', array(), et_get_theme_version() );
-  // wp_dequeue_style( 'divi-style' );
-  // wp_enqueue_style( 'child-theme', get_stylesheet_uri(), array(), wp_get_theme()->get('Version'));
+  wp_enqueue_style( 'divi-style-parent', get_template_directory_uri() . '/style.css', array(), et_get_theme_version() );
+  wp_enqueue_style( 'divi-style', get_stylesheet_uri(), array(), wp_get_theme()->get('Version'));
 
   wp_enqueue_script( 'mgnscnt-main', get_stylesheet_directory_uri() . '/js/main.js', '',  wp_get_theme()->get('Version'), true );
   wp_localize_script( 'mgnscnt-main', 'mgnscnt_actions', array(

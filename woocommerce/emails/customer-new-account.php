@@ -11,8 +11,8 @@
  * the readme will list any important changes.
  *
  * @see https://docs.woocommerce.com/document/template-structure/
- * @package WooCommerce/Templates/Emails
- * @version 3.7.0
+ * @package WooCommerce\Templates\Emails
+ * @version 6.0.0
  */
 
 defined( 'ABSPATH' ) || exit;

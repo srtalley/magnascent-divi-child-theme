@@ -2,9 +2,12 @@
 Theme Name: Magnascent - Divi Child
 Template: Divi
 Author: Dusty Sun LLC
-Version: 1.2.0
-Updated: 2021-12-28
+Version: 1.2.3a
+Updated: 2022-04-19
 */
+/* reCAPTCHA v3 */
+.grecaptcha-badge { visibility: hidden !important; }
+
 /* Remove gray line on pages */
 #main-content .container:before {
     display: none;
@@ -46,8 +49,9 @@ body:not(.et_pb_pagebuilder_layout) #main-content > .container {
 #primary-menu-wrapper {
     width: 100% !important;
 }
-#primary-menu-wrapper .et_pb_column {
+.et-db #et-boc .et-l #primary-menu-wrapper.et_pb_row .et_pb_column {
     transition: all .3s linear;
+    margin-right: auto !important;
 }
 #primary-menu-wrapper .et_pb_menu__wrap {
     justify-content: flex-end !important;
@@ -545,6 +549,9 @@ div.wpcf7-response-output {
     border-color: #005c9a !important;
     font-weight: 600 !important;
 }
+.woocommerce .quantity input.qty, .woocommerce-page .quantity input.qty, .woocommerce #content .quantity input.qty, .woocommerce-page #content .quantity input.qty, .woocommerce-cart table.cart td.actions .coupon .input-text {
+    padding: 12px 0;
+}
 /** WooCommerce Checkout **/
 .woocommerce .quantity input.qty, .woocommerce-page .quantity input.qty, .woocommerce #content .quantity input.qty, .woocommerce-page #content .quantity input.qty, .woocommerce-cart table.cart td.actions .coupon .input-text {
     border: 1px solid #818181 !important;
@@ -771,15 +778,15 @@ form.checkout.woocommerce-checkout .form-row label {
     text-decoration: none;
 }
 .quantity.buttons_added {
-    width: 120px;
+    width: 100%;
 }
 .quantity.buttons_added input[type="button"] {
     background-color: #fff !important;
     border: 2px solid #e2ad68 !important;
     color: #e2ad68 !important;
     font-weight: bold !important;
-    height: 22px !important;
-    width: 22px !important;
+    height: 29px !important;
+    width: 29px !important;
     line-height: 19px;
     font-size: 18px !important;
     border-radius: 0;
@@ -801,25 +808,29 @@ form.checkout.woocommerce-checkout .form-row label {
 }
 .quantity.buttons_added .input-text.qty {
     border: none;
-    width: 50px;
+    width: 66px;
     display: inline;
     text-align: center !important;
     font-weight: 600 !important;
     color: #303030 !important;
-    font-size: 18px !important;
+    font-size: 16px !important;
     background: 0 0;
     outline: 0;
     resize: none;
     background: #fff !important;
     height: auto;
     border: none;
+    padding: 0;
 }
 .quantity.buttons_added .input-text.qty::-webkit-inner-spin-button, 
 .quantity.buttons_added .input-text.qty::-webkit-outer-spin-button { 
     -webkit-appearance: none;
     margin: 0;
 }
-.wcopc.gb #opc-product-selection .shop_table tbody tr.product-item.restricted:not(.gb) {
+#opc-product-selection .shop_table.gb tbody tr.product-item.restricted:not(.gb) {
+    display: none;
+}
+#opc-product-selection .shop_table.us tbody tr.product-item.restricted:not(.us) {
     display: none;
 }
 .wcopc .restriction-notice {
@@ -1088,7 +1099,9 @@ form.checkout.woocommerce-checkout .input-text {
     padding: 5px 10px;
     margin-bottom: 10px !important;
 }
-
+#wc-epn-cc-form label {
+    padding-bottom: 5px;
+}
 /* Adding a spinner */
 .woocommerce-checkout .blockUI.blockOverlay:before,
 .woocommerce-checkout .loader:before {
@@ -1252,6 +1265,15 @@ form.checkout.woocommerce-checkout .input-text {
 } 
 .reviews-page-form .strong-form-inner {
     padding: 0;
+}
+.pum-content .strong-form .form-field {
+    margin-bottom: 0;
+}
+.pum-content .strong-form textarea {
+    height: 10em;
+}
+.pum-content .wpmtst-recaptcha {
+    margin-bottom: 20px;
 }
 .reviews-page-form #wpmtst_submit_testimonial {
     color: #fff;

@@ -9,8 +9,12 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
+
+// add the user country
+$user_country = strtolower(apply_filters('get_wc_user_country', ''));
+
 ?>
-<table class="shop_table" cellspacing="0">
+<table class="shop_table <?php echo $user_country; ?>" cellspacing="0">
 	<?php foreach( $products as $product ) : ?>
 
 	<?php 

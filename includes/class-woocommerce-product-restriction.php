@@ -6,6 +6,7 @@ class ProductRestriction {
     public function __construct() {
         add_action( 'wp_ajax_nopriv_mgnscnt_get_user_country', array($this, 'mgnscnt_get_user_country') );
         add_action( 'wp_ajax_mgnscnt_get_user_country', array($this, 'mgnscnt_get_user_country') );
+        add_filter( 'get_wc_user_country', array($this, 'get_wc_user_country'), 10, 1 );
     }
     
      /**
