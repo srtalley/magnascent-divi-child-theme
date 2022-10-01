@@ -11,6 +11,8 @@ class Vendor{
         add_action( 'wcmp_vendor_preview_tabs_form_post', array($this, 'show_vendor_info_in_plugin') );
         add_filter('wcmp_vendor_get_image_src', array($this, 'replace_broken_wcmp_user_profile_image'), 10, 1);
         add_action( 'edit_user_profile',  array($this, 'show_user_vendor_application') );
+
+        add_filter( 'wcmp_show_report_abuse_link', '__return_false' );
     }
     /**
      * Adds the vendor app info to the user profile

@@ -2,8 +2,8 @@
 Theme Name: Magnascent - Divi Child
 Template: Divi
 Author: Dusty Sun LLC
-Version: 1.2.4
-Updated: 2022-05-23
+Version: 1.2.6
+Updated: 2022-07-01
 */
 /* reCAPTCHA v3 */
 .grecaptcha-badge { visibility: hidden !important; }
@@ -39,6 +39,10 @@ body:not(.et_pb_pagebuilder_layout) #main-content > .container {
     padding-right: 15px;
 }
 /** PRIMARY MENU **/
+.et-l.et-l--header {
+    position: relative;
+    z-index: 9999 !important;
+}
 #mobile_menu2 {
     height: 80vh;
     overflow-y: scroll;
@@ -633,8 +637,13 @@ div#wc-af-recaptcha-checkout {margin-bottom:  20px;/* margin:  0 auto; */text-al
     order: 3;
     border: none;
 }
-#opc-product-selection .shop_table td {
+#opc-product-selection .shop_table td,
+#opc-product-selection .shop_table td.product-name, #opc-product-selection .shop_table td.product-price,
+#opc-product-selection .shop_table td.product-name, #opc-product-selection .shop_table td.product-price,
+#opc-product-selection .shop_table td.product-quantity {
     border-top: none;
+    flex: 1 1 100%;
+    width: 100%;
 }
 #opc-product-selection .shop_table td.product-quantity {
     text-align: center;
